@@ -1,13 +1,14 @@
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 
 public class CourseService {
     HashMap<String, Student> students = new HashMap<>();
 
     HashMap<String, Course> courses = new HashMap<>();
 
-
-    public CourseService()
-    {
+    public CourseService() {
         students.put( "120120", new Student( "Santiago", "120120" ) );
         students.put( "884545", new Student( "Kate", "884545" ) );
         students.put( "458787", new Student( "Alejandra", "458787" ) );
@@ -24,19 +25,49 @@ public class CourseService {
 
     public void enrollStudent(String studentId, String courseId){
         //TODO implement so it adds the given course form the student
+    	Student student = students.get(studentId);
+    	Course course = courses.get(courseId);
+    	student.enroll(course);
     }
 
     public void unEnrollStudent(String studentId, String courseId){
         //TODO implement so it removes the given course form the student
+    	Student student = students.get(studentId);
+    	Course course = courses.get(courseId);
+    	student.unEnroll(course);
     }
 
     public void displayCourseInformation(String courseId){
         //TODO implement so it shows the course name, id and credits
+    	Course course = courses.get(courseId);
+    	System.out.println(course.toString());
     }
 
     public void displayStudentInformation(String studentId){
         //TODO implement so it shows the student name, id and list of enrolled courses
+    	Student student = students.get(studentId);
+    	System.out.println(student.toString() + 
+    			"\nTotal enrolled courses: " + student.totalEnrolledCourses());
     }
 
+    public void displayCredits(String studentId) {
+    	int credits = 0;
+    	
+    	// Getting student object
+    	Student student = students.get(studentId);
+    	List<Course> studentCourses = new ArrayList<>();
+    	
+    	// Getting student enrolled courses list
+    	studentCourses = student.enrolledCourses;
+    	
+    	// Creating an iterator to go over course list
+    	Iterator<Course> iterator = studentCourses.iterator();
+    	while(iterator.hasNext()) {
+    		// Increasing credit counter
+    		credits += iterator.next().credits;
+    	}
+    	System.out.println("Total of credits: " + credits);
+    	
+    }
 
 }

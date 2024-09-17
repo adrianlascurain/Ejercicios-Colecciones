@@ -1,8 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class Student
-{
+public class Student {
     String name;
 
     String id;
@@ -10,29 +9,24 @@ public class Student
     List<Course> enrolledCourses = new ArrayList<>(  );
 
 
-    public Student( String name, String id )
-    {
+    public Student( String name, String id ) {
         this.name = name;
         this.id = id;
     }
 
-    public String getName()
-    {
+    public String getName() {
         return name;
     }
 
-    public void setName( String name )
-    {
+    public void setName( String name ) {
         this.name = name;
     }
 
-    public String getId()
-    {
+    public String getId() {
         return id;
     }
 
-    public void setId( String id )
-    {
+    public void setId( String id ) {
         this.id = id;
     }
 
@@ -46,17 +40,15 @@ public class Student
 
     public int totalEnrolledCourses(){
         //TODO implement
-        return 0;
+        return enrolledCourses.size();
     }
 
-    public List<Course> getEnrolledCourses()
-    {
+    public List<Course> getEnrolledCourses() {
         return enrolledCourses;
     }
 
     @Override
-    public String toString()
-    {
+    public String toString() {
         return "Student{" + "name='" + name + '\'' + ", id='" + id + '\'' + ", enrolledCourses=" + enrolledCourses
             + '}';
     }
